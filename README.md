@@ -120,6 +120,8 @@ eigenlayer operator config create
 
 > goerli eth RPC isteyecek, [infuradan](https://app.infura.io/) aldım ben ücretsiz goerli RPC
 
+> Infura sitesine girip hesabınızı oluşturduktan sonra "My first key"'e basın, ardından GOERLI tikini aktif hale getirin ve Active Endpoints kısmından HTTPS ve WebSockets linklerini kopyayalın. 
+
 > `ecdsa key` oluşturduğumuzda bize verdiği key pathi tam şekilde giriyoruz
 
 > aynı şekilde `bls key` path giriyoruz - path ne olduğunu bilmeyenler için görsele bakabilir
@@ -210,9 +212,9 @@ nano .env
 # Üst kısma dokunmuyorsunuz. SADECE: TODO yazan satırın altı bizi ilgilendiriyor.
 ETH_RPC_URL= goerli eth rpc http linki
 ETH_WS_URL= goerli eth wss linki
-# bu linkleri infuradan almıştık, zorlanırsan rues chatten yardım talep edin.
+# bu linkleri infuradan almıştık, RPC linki yerine kopyaladığımız HTTPS linkini yapıştırıyoruz WS yerine ise aynı siteden kopyaladığımız WebSocket linkini yapıştırıyoruz. (Eğer kopyalamadıysanız infura sitesine girip rpc alırken ki adımları tekrar yapıp alabilirsiniz) zorlanırsanız da rues chatten yardım talep edin.
 
-# key yolundan kastım path, yukarıda öğrenmiştiniz.
+# key yolundan kastım path, yukarıda öğrenmiştiniz. Burada ='den sonra gelen ~'leri silmeyi unutmayın hata alırsınız. /root ile başlaması lazım yani. 
 ECDSA_KEY_FILE_HOST= eigen cli kurulumda aldığımız ecdsa key yolumuz
 BLS_KEY_FILE_HOST= eigen cli kurulumda aldığımız bls key yolumuz
 
@@ -228,7 +230,8 @@ BLS_KEY_PASSWORD= eigen cli kurulumda belirlediğimiz karmaşık key şifresi
 # key yolunda, şifrede vs hata yoksa bu adımlardan sonra docker compose up yapıyoruz ve sona geliyoruz.
 docker compose up -d
 
-# bir sorun olup olmadığını kontrol etmek için docker ps ile container id alın
+# bir sorun olup olmadığını kontrol etmek için bu kodu yazın ve container id'nizi alın ardından <container_id> yazan yerde tırnakları silip container id'nizi yazın. 
+docker ps
 docker logs -f <container_id>
 # container id başta olur ve kurduğunuz node'un isminden hangi id olduğunu anlayabilirsiniz.
 ```
